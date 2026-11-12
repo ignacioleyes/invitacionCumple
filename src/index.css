@@ -3,19 +3,118 @@
   themes: pastel --default;
 }
 
-
 @theme {
   --font-display: "Fredoka", ui-rounded, system-ui, sans-serif;
+  --color-sky: #7ea7e4;
+  --color-snoopy-red: #ef4444;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-display);
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+/* Fondo suave con huellitas para las secciones */
+.paws-bg {
+  background-color: var(--color-base-100);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='%23d8b4fe' fill-opacity='0.18'%3E%3Cellipse cx='30' cy='38' rx='9' ry='8'/%3E%3Ccircle cx='19' cy='26' r='4'/%3E%3Ccircle cx='27' cy='20' r='4'/%3E%3Ccircle cx='36' cy='20' r='4'/%3E%3Ccircle cx='43' cy='27' r='4'/%3E%3Cellipse cx='90' cy='98' rx='9' ry='8'/%3E%3Ccircle cx='79' cy='86' r='4'/%3E%3Ccircle cx='87' cy='80' r='4'/%3E%3Ccircle cx='96' cy='80' r='4'/%3E%3Ccircle cx='103' cy='87' r='4'/%3E%3C/g%3E%3C/svg%3E");
 }
-.animate-float {
-  animation: float 3s ease-in-out infinite;
+
+/* Hace "transparente" el fondo blanco de los dibujos sobre fondos claros */
+.drawing {
+  mix-blend-mode: multiply;
+  filter: brightness(1.06) contrast(1.08);
+}
+
+/* Texto legible sobre el cielo */
+.text-outline {
+  text-shadow:
+    3px 3px 0 #fff, -3px -3px 0 #fff, 3px -3px 0 #fff, -3px 3px 0 #fff,
+    0 3px 0 #fff, 3px 0 0 #fff, 0 -3px 0 #fff, -3px 0 0 #fff,
+    0 8px 16px rgb(0 0 0 / 0.15);
+}
+
+/* ---------- Animaciones ---------- */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-14px) rotate(2deg); }
+}
+.animate-float { animation: float 4s ease-in-out infinite; }
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+.animate-wiggle { animation: wiggle 2.4s ease-in-out infinite; transform-origin: bottom center; }
+
+@keyframes wave-letter {
+  0%, 60%, 100% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-0.25em) scale(1.08); }
+}
+.wave-letter {
+  display: inline-block;
+  animation: wave-letter 2.6s ease-in-out infinite;
+}
+
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.4) rotate(-8deg); }
+  70% { opacity: 1; transform: scale(1.08) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+.animate-pop-in { animation: pop-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+@keyframes slow-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+.animate-slow-zoom { animation: slow-zoom 20s ease-in-out infinite alternate; }
+
+@keyframes rise {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.9; }
+  50% { transform: translateY(-55vh) translateX(20px); }
+  90% { opacity: 0.9; }
+  100% { transform: translateY(-115vh) translateX(-10px); opacity: 0; }
+}
+.balloon {
+  position: absolute;
+  bottom: -120px;
+  animation: rise linear infinite;
+  pointer-events: none;
+}
+
+@keyframes peek {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes bounce-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.animate-bounce-soft { animation: bounce-soft 1.6s ease-in-out infinite; }
+
+/* Aparición al hacer scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  .balloon { display: none; }
 }

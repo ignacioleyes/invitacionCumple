@@ -24,8 +24,15 @@ export const event = {
     mapsQuery: 'Pascual Chuchuy 700, Villa Esperanza, Cerrillos, Salta, Argentina',
   },
 
-  /** Imagen opcional para la portada: poné el archivo en /public y escribí su nombre, ej. '/portada.png'. */
-  heroImage: '' as string,
+  /** Imágenes (archivos dentro de /public). */
+  images: {
+    wallpaper: '/snoopyWallpaper.jpg',
+    hero: '/snoopyCumpleGlobos.jpg',
+    date: '/snoopyCumple.jpg',
+    location: '/snoopy.jpg',
+    rsvp: '/snoopyAsomandose.jpg',
+    thanks: '/snoopyAbrazo.jpg',
+  },
 
   messages: {
     intro: '¡Te invito a festejar mi cumple!',

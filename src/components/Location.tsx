@@ -1,4 +1,5 @@
 import { event } from '../config/event'
+import { Reveal } from './Reveal'
 
 export function Location() {
   const query = encodeURIComponent(event.location.mapsQuery)
@@ -6,37 +7,52 @@ export function Location() {
   const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${query}`
 
   return (
-    <section className="py-16 px-4 bg-base-200">
-      <div className="max-w-3xl mx-auto flex flex-col gap-6">
-        <h2 className="text-4xl font-bold text-center">¿Dónde? 📍</h2>
+    <section className="bg-base-200 py-20 px-4 overflow-hidden">
+      <div className="max-w-3xl mx-auto flex flex-col gap-8">
+        <Reveal>
+          <h2 className="text-4xl md:text-5xl font-bold text-center">¿Dónde? 📍</h2>
+        </Reveal>
 
-        <div className="card bg-base-100 shadow-md">
-          <div className="card-body items-center text-center gap-1">
-            <p className="text-xl font-bold">{event.location.address}</p>
-            <p className="text-base-content/70">
-              {event.location.placeName} · {event.location.city}
-            </p>
+        <Reveal delay={100}>
+          <div className="flex items-end justify-center gap-2">
+            <img
+              src={event.images.location}
+              alt="Snoopy saludando"
+              className="drawing w-24 md:w-32 animate-float shrink-0"
+            />
+            <div className="chat chat-start flex-1 max-w-md">
+              <div className="chat-bubble chat-bubble-accent text-left py-4 px-5 shadow-md">
+                <p className="text-lg font-bold">{event.location.address}</p>
+                <p className="opacity-80">
+                  {event.location.placeName} · {event.location.city}
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="rounded-box overflow-hidden shadow-md aspect-video bg-base-300">
-          <iframe
-            title="Mapa del lugar del cumpleaños"
-            src={embedUrl}
-            className="w-full h-full border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
+        <Reveal delay={200}>
+          <div className="rounded-box overflow-hidden shadow-xl aspect-video bg-base-300 ring-4 ring-white">
+            <iframe
+              title="Mapa del lugar del cumpleaños"
+              src={embedUrl}
+              className="w-full h-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </Reveal>
 
-        <a
-          href={directionsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-accent btn-lg rounded-full self-center"
-        >
-          🚗 Cómo llegar
-        </a>
+        <Reveal delay={300} className="self-center">
+          <a
+            href={directionsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-accent btn-lg rounded-full shadow-lg hover:scale-110 transition-transform"
+          >
+            🚗 Cómo llegar
+          </a>
+        </Reveal>
       </div>
     </section>
   )
