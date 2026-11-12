@@ -18,7 +18,7 @@ Para probar contra la planilla real, creá `.env.local` (ver `.env.example`).
 1. Editá `src/config/event.ts`: nombre, edad, fecha, dirección y **cambiá el `id`** (ej. `martina-8-2027`).
    Así las confirmaciones van a una pestaña nueva de la planilla.
 2. Actualizá el `<title>` y las etiquetas `og:` de `index.html` (es lo que se ve al compartir el link por WhatsApp).
-3. (Opcional) Poné una imagen en `public/` y configurá `heroImage` en el mismo archivo.
+3. (Opcional) Cambiá las imágenes: poné los archivos en `public/` y actualizá `images` en el mismo archivo.
 4. Hacé commit y push: Render vuelve a desplegar solo.
 
 ## Google Sheets
