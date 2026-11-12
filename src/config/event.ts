@@ -37,6 +37,11 @@ export const event = {
   messages: {
     intro: '¡Te invito a festejar mi cumple!',
     closing: '¡Te espero para jugar y divertirnos un montón!',
+    /** Recordatorios que se muestran al final de la invitación. */
+    reminders: [
+      { icon: '🩱', who: 'Chicos', text: '¡No se olviden el traje de baño!' },
+      { icon: '🧉', who: 'Papis', text: '¡Traigan el mate!' },
+    ],
   },
 } as const
 
