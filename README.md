@@ -15,6 +15,10 @@ Para probar contra la planilla real, creá `.env.local` (ver `.env.example`).
 
 ## Nuevo cumple / nuevo año
 
+👉 **Guía completa paso a paso: [`NUEVO-CUMPLE.md`](./NUEVO-CUMPLE.md)**
+
+Resumen:
+
 1. Editá `src/config/event.ts`: nombre, edad, fecha, dirección y **cambiá el `id`** (ej. `martina-8-2027`).
    Así las confirmaciones van a una pestaña nueva de la planilla.
 2. Actualizá el `<title>` y las etiquetas `og:` de `index.html` (título, descripción con fecha e imagen: es lo que se ve al compartir el link por WhatsApp).
