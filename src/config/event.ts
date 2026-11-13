@@ -17,11 +17,12 @@ export const event = {
   dateTime: '2026-11-28T15:00:00-03:00',
 
   location: {
-    placeName: 'Barrio Villa Esperanza',
-    address: 'Calle Pascual Chuchuy al 700, esquina Brasil',
+    venue: 'El Alemán Salón de Eventos',
+    address: 'Pascual Chuchuy 710, esquina Brasil',
+    neighborhood: 'Barrio Villa Esperanza',
     city: 'Cerrillos, Salta',
-    /** Texto que se usa para buscar el lugar en Google Maps. */
-    mapsQuery: 'Pascual Chuchuy 700, Villa Esperanza, Cerrillos, Salta, Argentina',
+    /** Texto que se usa para buscar el lugar en Google Maps (con el nombre del salón queda más preciso). */
+    mapsQuery: 'El Alemán Salón de Eventos, Pascual Chuchuy 710, A4403 Cerrillos, Salta',
   },
 
   /** Imágenes (archivos dentro de /public). */

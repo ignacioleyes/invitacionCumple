@@ -22,9 +22,10 @@ export function Location() {
             />
             <div className="chat chat-start flex-1 max-w-md">
               <div className="chat-bubble chat-bubble-accent text-left py-4 px-5 shadow-md">
-                <p className="text-lg font-bold">{event.location.address}</p>
+                <p className="text-xl font-bold">{event.location.venue}</p>
+                <p className="font-semibold">{event.location.address}</p>
                 <p className="opacity-80">
-                  {event.location.placeName} · {event.location.city}
+                  {event.location.neighborhood} · {event.location.city}
                 </p>
               </div>
             </div>
